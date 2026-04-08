@@ -105,10 +105,11 @@ LAB SETUP INSTRUCTIONS
  */
 
 //import express
-
+import express from 'express';
 
 // create express app instance to create web server
-
+const app = express();
+const PORT = 3000;
 
 
 // Query params: /echo?name=Ali&age=22
@@ -124,5 +125,7 @@ LAB SETUP INSTRUCTIONS
 
 
 // Start the server by listening
-
+app.listen(PORT, () => {
+    console.log(`API running at http://localhost:${PORT}`);
+});
 
