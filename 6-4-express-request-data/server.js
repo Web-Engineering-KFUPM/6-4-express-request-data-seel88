@@ -113,7 +113,23 @@ const PORT = 3000;
 
 
 // Query params: /echo?name=Ali&age=22
+app.get("/echo", (req, res) => {
+    const { name, age } = req.query;
 
+    if (!name || !age) {
+        return res.status(400).json({ 
+            ok: false, 
+            error: "name & age required" 
+        });
+    }
+
+    res.json({ 
+        ok: true, 
+        name, 
+        age, 
+        msg: `Hello ${name}, you are ${age}` 
+    });
+});
 
 // Route params: /profile/First/Last
 
@@ -127,7 +143,7 @@ const PORT = 3000;
 // Start the server by listening
 
 app.listen(PORT, () => {
-   
+
     console.log(`API running at http://localhost:${PORT}`);
 });
 
